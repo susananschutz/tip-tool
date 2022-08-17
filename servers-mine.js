@@ -35,10 +35,20 @@ function updateServerTable() {
     newTr.setAttribute('id', key);
 
     let tipAverage = sumPaymentTotal('tipAmt') / Object.keys(allServers).length;
-
+    //let deleteBtn = document.createElement('button');
+    //deleteBtn.setAttribute('type', button);
+    let appendDeleteBtn = document.createElement('td');
+    appendDeleteBtn.setAttribute('id', "delete");
+    //appendDeleteBtn.innerText = 'X';
     appendTd(newTr, curServer.serverName);
     appendTd(newTr, '$' + tipAverage.toFixed(2));
-
+    appendTd(newTr, 'X', appendDeleteBtn);
     serverTbody.append(newTr);
   }
 }
+//serverForm.addEventListener(appendDeleteBtn, function()){
+ // let nameToDelete = document.getElementById("delete");
+//function deleteServer( ){
+  //deleteTr = 
+  //serverTbody.remove(newTr);
+//}}
