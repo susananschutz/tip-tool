@@ -21,6 +21,7 @@ function submitServerInfo(evt) {
     updateServerTable();
 
     serverNameInput.value = '';
+    
   }
 }
 
@@ -38,7 +39,7 @@ function updateServerTable() {
     //let deleteBtn = document.createElement('button');
     //deleteBtn.setAttribute('type', button);
     let appendDeleteBtn = document.createElement('td');
-    appendDeleteBtn.setAttribute('id', "delete");
+    //appendDeleteBtn.setAttribute('id', "delete");
     //appendDeleteBtn.innerText = 'X';
     appendTd(newTr, curServer.serverName);
     appendTd(newTr, '$' + tipAverage.toFixed(2));

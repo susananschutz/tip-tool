@@ -19,7 +19,7 @@ function submitPaymentInfo(evt) {
   if (curPayment) {
     paymentId += 1;
 
-    const newLocal = allPayments['payment' + paymentId] = curPayment;
+     allPayments['payment' + paymentId] = curPayment;
 
     appendPaymentTable(curPayment);
     updateServerTable();
@@ -51,11 +51,15 @@ function createCurPayment() {
 function appendPaymentTable(curPayment) {
   let newTr = document.createElement('tr');
   newTr.id = 'payment' + paymentId;
+  let paymentDeleteBtn = document.createElement('td');
+  paymentDeleteBtn.setAttribute('id', 'deletepmt');
+  let billAmt = billAmtInput.value;
+  let tipAmt = tipAmtInput.value;
 
   appendTd(newTr, '$' + curPayment.billAmt);
   appendTd(newTr, '$' + curPayment.tipAmt);
   appendTd(newTr, curPayment.tipPercent + '%');
-
+  appendTd(newTr, 'X', paymentDeleteBtn);
   paymentTbody.append(newTr);
 }
 
