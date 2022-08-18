@@ -4,7 +4,7 @@ describe("helpers file", function(){
     // initialization logic
       allPayments = {'20': '10' }; 
      //unsure how to create an array to go in
-    
+    });
 
   it('accepts pay and tip amounts and sums total from allPayments objects', function () {
       subPaymentTotal();
@@ -17,16 +17,16 @@ describe("helpers file", function(){
       
     
       return total;
-    
+      }
       expect(total += Number(payment[type])).toEqual(30);
-      expect().toEqual();
-    }});
+      
+    });
 
   afterEach(function() {
       total = 0;
       allPayment = {};
     // teardown logic
-    })})
+    });
 
   beforeEach(function () {
     // initialization logic
@@ -60,8 +60,8 @@ describe("helpers file", function(){
         let appendDeleteBtn = document.createElement('td');
   
       expect(newTd.innerText = value).toEqual(10);
-    
+      }});
 
   afterEach(function() {
       tr.remove(newTd);
-    })}})})
+    })});

@@ -5,7 +5,7 @@ describe("payments functons", function() {
     billAmt = "100"
     tipAmt = "15"
     let paymentId = 0;
-    
+  });
   
   it('should add a curPayment object to allPayments, update html and reset input values', function () {
       submitPaymentInfo();
@@ -24,14 +24,10 @@ describe("payments functons", function() {
             paymentId +=1;
         
       allPayments['payment' + paymentId] = curPayment;
-  
+        }}}};
       expect(curPayment).toEqual('15');
+    });
     
-    }};
-  
-      
-      // teardown logic
-    }}})}); 
 
   beforeEach(function () {
       // initialization logic
@@ -70,32 +66,32 @@ describe("payments functons", function() {
             newTr.setAttribute('id', key);
             let tipAverage = sumPaymentTotal('tipAmt') / Object.keys(allServers).length;
             let appendDeleteBtn = document.createElement('td');
-
+        }});
       expect(getElementById('payment+(paymentID)').value).toEqual(billAmt, tipAmt, '%');
     
   
   afterEach(function() {
         serverTbody.remove(newTr); //if you have added it
-    })}})   
+    })   
 
      describe("beforeEach function", function(){
         beforeEach(function () {
       // initialization logic
             paymentTotal = 200
             allPayments.length = 10
-      
+        })});
   
         it('should create table row element and pass to appendTd with calculated sum of all payment', function () {
             updateSummary();
             expect(tipPercentAvg = paymentTotal / Object.keys(allPayments).length).toEqual('20');
-      
+        });
   
         afterEach(function() {
     
         summaryTds[0].innerHTML = 0;
         summaryTds[1].innerHTML = 0;
         summaryTds[2].innerHTML = 0;
-        })})})});
+        })});
     
     // teardown logic
 
