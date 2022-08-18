@@ -1,98 +1,70 @@
 describe("payments functons", function() {
-  
   beforeEach(function () {
     // initialization logic
-    billAmt = "100"
-    tipAmt = "15"
-    let paymentId = 0;
+    billAmtInput.value = 100
+    tipAmtInputValue = 20
+    
+  });
+
+  it('should add a new payment to allPayments on submitPaymentInfo()', function(){
+    submitPaymentInfo();
+
+    expect(Object.keys(allPayments).length).toEqual(2);
+    expect(allPayments['payment1'].billAmt).toEqual('100');
+    expect(allPayments['payment1'].tipAmt).toEqual('20');
+    expect(allPayments['payment1'].tipPercent).toEqual(20);
+
+  });
+
+  it('should not add a new payment with empty input', function(){
+    billAmtInput.value = '';
+    submitPaymentInfo();
+
+    expect(Object.keys(allPayments).length).toEqual(1);
   });
   
-  it('should add a curPayment object to allPayments, update html and reset input values', function () {
-      submitPaymentInfo();
-      function createCurPayment() {
-        let billAmt = billAmtInput.value;
-        let tipAmt = tipAmtInput.value;
-      
-        if (billAmt === '' || tipAmt === '') return;
-      
-        if (Number(billAmt) > 0 && Number(tipAmt) >= 0) {
-          return {
-            billAmt: billAmt,
-            tipAmt: tipAmt,
-            tipPercent: calculateTipPercent(billAmt, tipAmt),
-        if (curPayment) {
-            paymentId +=1;
-        
-      allPayments['payment' + paymentId] = curPayment;
-        }}}};
-      expect(curPayment).toEqual('15');
-    });
+  it('should update paymentTable on appendPaymentTable', function () {
+    let curPayment = createCurPayment();
+    allPayments['payment1'] = curPayment;
     
+    appendPaymentTable(curPayment);
+    let curTdList = document.querySelectorAll('#paymentTable tbody tr td');
 
-  beforeEach(function () {
-      // initialization logic
-      billAmt = "100";
-      tipAmt = "15";
+    expect(curTdList.length).toEqual(4);
+    expect(curTdList[0].innerText).toEqual('$100');
+    expect(curTdList[1].innerText).toEqual('$20');
+    expect(curTdList[2].innerText).toEqual('%20');
+    expect(curTdList[3].innerText).toEqual('X');
+
     });
+  it('should create anew payment', function () {
+    let expectedPayment = {
+     billAmt: '100',
+     tipAmt: '20',
+     tipPercent: 20,
+      }
+      expect(createCurPayment()).toEqual(expectedPayment);
+  });
   
-  it('should return undefined with negative or empty inputs', function () {
-      createCurPayment();
-      
-      expect( {
-        billAmt: billAmt,
-        tipAmt: tipAmt,
-        tipPercent: calculateTipPercent(billAmt, tipAmt)}
-        ).toEqual(
-          { billAmt: "100",
-          tipAmt: "15",
-          tipPercent: 15});
-      
-    });
+  it('should not create a payment with no input', function () {
+    billAmtInput.value = '';
+    tipAmtInput.value = '';
+    let curPayment = createCurPayment();    
+    expect(curPayment).toEqual(undefined);
+  });
   
   afterEach(function() {
-       billAmtn = "0";
-       tipAmt = "0";
+    billAmtInput.value = "0";
+    tipAmtInput.value = "0";
+    paymentTbody.innerHTML = '';
+    summaryTds[0].innerHTML = '';
+    summaryTds[1].innerHTML = '';
+    summaryTds[2].innerHTML = '';
+    serverTbody.innerHTML = '';
+    paymentId = 0;
+    allPayments = {};
     });
-  
-      // initialization logic
-      // only creating an element and appending 
-  
-  it('Create table row element and pass to appendTd with input value', function () {
-        appendPaymentTable();
-        for (let key in allServers) {
-            let curServer = allServers[key];
-        
-            let newTr = document.createElement('tr');
-            newTr.setAttribute('id', key);
-            let tipAverage = sumPaymentTotal('tipAmt') / Object.keys(allServers).length;
-            let appendDeleteBtn = document.createElement('td');
-        }});
-      expect(getElementById('payment+(paymentID)').value).toEqual(billAmt, tipAmt, '%');
+ });
     
-  
-  afterEach(function() {
-        serverTbody.remove(newTr); //if you have added it
-    })   
 
-     describe("beforeEach function", function(){
-        beforeEach(function () {
-      // initialization logic
-            paymentTotal = 200
-            allPayments.length = 10
-        })});
   
-        it('should create table row element and pass to appendTd with calculated sum of all payment', function () {
-            updateSummary();
-            expect(tipPercentAvg = paymentTotal / Object.keys(allPayments).length).toEqual('20');
-        });
-  
-        afterEach(function() {
-    
-        summaryTds[0].innerHTML = 0;
-        summaryTds[1].innerHTML = 0;
-        summaryTds[2].innerHTML = 0;
-        })});
-    
-    // teardown logic
-
-  })

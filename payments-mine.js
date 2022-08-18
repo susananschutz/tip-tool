@@ -51,10 +51,10 @@ function createCurPayment() {
 function appendPaymentTable(curPayment) {
   let newTr = document.createElement('tr');
   newTr.id = 'payment' + paymentId;
+  //let billAmt = billAmtInput.value;
+  //let tipAmt = tipAmtInput.value;
   let paymentDeleteBtn = document.createElement('td');
   paymentDeleteBtn.setAttribute('id', 'deletepmt');
-  let billAmt = billAmtInput.value;
-  let tipAmt = tipAmtInput.value;
 
   appendTd(newTr, '$' + curPayment.billAmt);
   appendTd(newTr, '$' + curPayment.tipAmt);

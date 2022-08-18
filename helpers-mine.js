@@ -14,7 +14,7 @@ function sumPaymentTotal(type) {
 
 // converts the bill and tip amount into a tip percent
 function calculateTipPercent(billAmt, tipAmt) {
-  return Math.round(100 / (tipAmt / billAmt));
+  return Math.round(100 / (billAmt / tipAmt));
 }
 
 // expects a table row element, appends a newly created td element from the value

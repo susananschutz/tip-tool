@@ -1,67 +1,71 @@
 describe("helpers file", function(){
   
-    beforeEach(function () {
-    // initialization logic
-      allPayments = {'20': '10' }; 
-     //unsure how to create an array to go in
-    });
+  beforeEach(function () {
+   billAmtInput.value = '100';
+   tipAmtInput.value = '20';
+   submitPaymentInfo();
+  });
 
   it('accepts pay and tip amounts and sums total from allPayments objects', function () {
-      subPaymentTotal();
-      let total = 0;
+     
+    billAmtInput.value = 200;
+    tipAmtInput.value = 40;
 
-      for (let key in allPayments) {
-        let payment = allPayments[key];
-    
-        total += Number(payment[type]);
-      
-    
-      return total;
-      }
-      expect(total += Number(payment[type])).toEqual(30);
-      
-    });
+    submitPaymentInfo();
 
-  afterEach(function() {
+    expect(sumPaymentTotal('tipAmt')).toEqual(60);
+   });
+
+  it('accepts pay and tip amounts and sums total from allPayments objects', function () {
+       
+      billAmtInput.value = 200;
+      tipAmtInput.value = 40;
+
+      submitPaymentInfo();
+
+      expect(sumPaymentTotal('billAmt')).toEqual(300);
+   });
+    
+  it('accepts pay and tip amounts and sums total from allPayments objects', function () { 
+      billAmtInput.value = 200;
+      tipAmtInput.vale = 40;
+
+      submitPaymentInfo();
+
+      expect(sumPaymentTotal('tipPercent')).toEqual(20);
+   });  
+
+  it('should sum tip percent of a single tip', function(){
+    expect(calculateTipPercent(100, 19)).toEqual(19);
+
+   })
+
+  it('should generate new td', function () {
+      let newTr = document.createElement('tr');
+       appendTd(newTr, 'trial');
+
+    
+      expect(newTr.children.length).toEqual(1);
+      expect(newTr.firstChild.innerHTML).toEqual('trial');
+   });
+
+
+  it('should generate delete td and append to tr on appendDeleteBtn(tr, type', function(){
+    let newTr = document.createElement('tr');
+
+    expect(newTr.children.length).toEqual(1);
+    expect(newTr.firstChild.innerHTML).toEqual('X');
+  })
+
+    afterEach(function() {
+      serverTbody.innerHTML = '';
+      summaryTds[0].innerHTML = '';
+      summaryTds[1].innerHTML = '';
+      summaryTds[2].innerHTML = '';
       total = 0;
       allPayment = {};
-    // teardown logic
-    });
-
-  beforeEach(function () {
-    // initialization logic
-      billAmt = '100';
-      tipAmt = '20';
-    });
-
-  it('expects a table row element, appends a newly created td element from the value', function () {
-      calculateTipPercent();
-    
-      expect( Math.round(100 / (tipAmt / billAmt))).toEqual(20);
-    });
-
-  afterEach(function() {
-      billAmt ="0";
-      tipAmt = "0";
-    });
-
-  beforeEach(function () {
-      value = '10' 
-    });
-
-  it('expects a table row element, appends a newly created td element from the value', function () {
-      appendTd();
-      for (let key in allServers) {
-        let curServer = allServers[key];
-    
-        let newTr = document.createElement('tr');
-        newTr.setAttribute('id', key);
-        let tipAverage = sumPaymentTotal('tipAmt') / Object.keys(allServers).length;
-        let appendDeleteBtn = document.createElement('td');
-  
-      expect(newTd.innerText = value).toEqual(10);
-      }});
-
-  afterEach(function() {
-      tr.remove(newTd);
-    })});
+      paymentId = 0;
+      billAmtInput.value = ' ';
+      tipAmtInput.value = ' ';
+   });
+ });

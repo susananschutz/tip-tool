@@ -1,45 +1,38 @@
 describe("Servers test (with setup and tear-down)", function() {
   beforeEach(function () {
-    // initialization logic
-    serverNameInput.value = '';
-    let allServers = {};
+    serverNameInput.value = 'Alice';
   });
 
   it('should add a new server to allServers on submitServerInfo()', function () {
-    submitServerInfo();
-
     expect(Object.keys(allServers).length).toEqual(1);
     expect(allServers['server' + serverId].serverName).toEqual('Alice');
+    
   });
 
-  afterEach(function() {
-  
+
+  it('should not add a server when the input is blank', function () {
     serverNameInput.value = '';
-    // teardown logic
-  });
-
-  beforeEach(function () {
-    // initialization logic
-    serverNameInput.value = 'Alice';
-    tipAmtInput = '10.55';
-  });
-
-  it('Create table row element and pass to appendTd function with input value', function () {
+    submitServerInfo();
+    expect(Object.keys(allServers).length).toEqual(0);
+  
+   });
+   
+  it('should update server table on updateServerTable()', function(){
+    submitServerInfo();
     updateServerTable();
-    for (let key in allServers) {
-      let curServer = allServers[key];
-    
-      let newTr = document.createElement('tr');
-      newTr.setAttribute('id', key);
-      let tipAverage = sumPaymentTotal('tipAmt') / Object.keys(allServers).length;
-      let appendDeleteBtn = document.createElement('td');
-    
-    expect(appendTd(newTr, curServer.serverName)).toEqual('Alice');
-    expect(tipAverage.toFixed(2)).toEqual('10.55');
-    expect(appendTd(newTr, appendDeleteBtn)).toEquql("X");
-    }
+
+    let curTdList = document.querySelectorAll('#serverTable tbody tr td');
+
+    expect(curTdList.length).toEqual(3);
+    expect(curTdList[0].innerText).toEqual('Alice');
+    expect(curTdList[1].innerText).toEqual('$0.00');
+    expect(curTdList[2].innerText).toEqual('X');
+  });
+
   afterEach(function() {
-    serverTbody.remove(newTr);
-  })});
-  // teardown logic
+    serverId = 0;
+    serverTbody.innerHTML = '';
+    allServers = {};
+  });
 });
+  // teardown logic
