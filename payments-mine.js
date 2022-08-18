@@ -35,7 +35,7 @@ function submitPaymentInfo(evt) {
 function createCurPayment() {
   let billAmt = billAmtInput.value;
   let tipAmt = tipAmtInput.value;
-
+    console.log(billAmt, tipAmt);
   if (billAmt === '' || tipAmt === '') return;
 
   if (Number(billAmt) > 0 && Number(tipAmt) >= 0) {

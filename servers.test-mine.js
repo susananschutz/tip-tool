@@ -1,10 +1,13 @@
 describe("Servers test (with setup and tear-down)", function() {
   beforeEach(function () {
     serverNameInput.value = 'Alice';
+    let serverId = 0;
   });
 
   it('should add a new server to allServers on submitServerInfo()', function () {
+    submitServerInfo();
     expect(Object.keys(allServers).length).toEqual(1);
+
     expect(allServers['server' + serverId].serverName).toEqual('Alice');
     
   });
@@ -16,7 +19,7 @@ describe("Servers test (with setup and tear-down)", function() {
     expect(Object.keys(allServers).length).toEqual(0);
   
    });
-   
+
   it('should update server table on updateServerTable()', function(){
     submitServerInfo();
     updateServerTable();
